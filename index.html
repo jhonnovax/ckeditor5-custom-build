@@ -28,7 +28,16 @@
 
 <script src="/ckeditor5-custom-build/build/ckeditor.js"></script>
 <script>
-	ClassicEditor.create( document.querySelector( '#editor' ) )
+	const editorConfiguration = {
+		tokens: [
+			'FIRSTNAME',
+			'LASTNAME',
+			'EMAIL',
+			'COMPANY'
+		]
+	}
+
+	ClassicEditor.create( document.querySelector( '#editor' ), editorConfiguration )
 		.then( editor => {
 			window.editor = editor;
 		} )
