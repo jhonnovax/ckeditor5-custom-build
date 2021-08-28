@@ -85,6 +85,31 @@ ClassicEditor.defaultConfig = {
 			'tokens'
 		]
 	},
+	highlight: {
+		options: [
+			{
+				model: 'greenMarker',
+				class: 'marker-green',
+				title: 'Green marker',
+				color: 'rgb(25, 156, 25)',
+				type: 'marker'
+			},
+			{
+				model: 'yellowMarker',
+				class: 'marker-yellow',
+				title: 'Yellow marker',
+				color: '#cac407',
+				type: 'marker'
+			},
+			{
+				model: 'redPen',
+				class: 'pen-red',
+				title: 'Red pen',
+				color: 'hsl(343, 82%, 58%)',
+				type: 'pen'
+			}
+		]
+	},
 	image: {
 		toolbar: [
 			'imageStyle:full',

@@ -19,31 +19,17 @@ class Tokens extends Plugin {
 				tooltip: true
 			} );
 
-			items.add( {
-				type: 'button',
-				model: new Model( {
-					withText: true,
-					label: 'FIRSTNAME',
-					value: 'FIRSTNAME'
-				} )
-			} );
+			const tokens = editor.config.get( 'tokens' ) || [];
 
-			items.add( {
-				type: 'button',
-				model: new Model( {
-					withText: true,
-					label: 'LASTNAME',
-					value: 'LASTNAME'
-				} )
-			} );
-
-			items.add( {
-				type: 'button',
-				model: new Model( {
-					withText: true,
-					label: 'EMAIL',
-					value: 'EMAIL'
-				} )
+			tokens.forEach( token => {
+				items.add( {
+					type: 'button',
+					model: new Model( {
+						withText: true,
+						label: token,
+						value: token
+					} )
+				} );
 			} );
 
 			addListToDropdown( view, items );
@@ -53,9 +39,9 @@ class Tokens extends Plugin {
 				const tokenName = `#${ event.source.value }#`;
 
 				editor.model.change( writer => {
-					const spanElement = writer.createElement( 'span' );
-					writer.insertText( tokenName, spanElement );
-					writer.setAttribute( 'style', 'background: yellow; padding: 10px;', spanElement );
+					const spanElement = writer.createText( tokenName );
+					writer.setAttribute( 'bold', true, spanElement );
+					writer.setAttribute( 'highlight', 'yellowMarker', spanElement );
 					editor.model.insertContent( spanElement, editor.model.document.selection );
 				} );
 			} );
